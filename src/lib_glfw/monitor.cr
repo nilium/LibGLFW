@@ -31,7 +31,7 @@ lib LibGLFW
   alias Monitorfun = (Monitor*, Int32 -> Void)
 
   # Describes a single video mode.
-  struct Vidmode
+  struct VidMode
     # The width, in screen coordinates, of the video mode.
     width : Int32
 
@@ -52,7 +52,7 @@ lib LibGLFW
   end
 
   # Describes the gamma ramp for a monitor.
-  struct Gammaramp
+  struct GammaRamp
     # An array of values describing the response of the red channel.
     red : UInt16*
 
@@ -236,7 +236,7 @@ lib LibGLFW
   # Returns an array of video modes, or *nil* if an error occurs.
   @[Raises]
   fun get_video_modes = glfwGetVideoModes(monitor : Monitor*,
-                                          count : Int32*) : Vidmode*
+                                          count : Int32*) : VidMode*
 
   # Returns the current mode of the specified monitor.
   #
@@ -248,7 +248,7 @@ lib LibGLFW
   #
   # Returns the current mode of the monitor, or *nil* if an error occurs.
   @[Raises]
-  fun get_video_mode = glfwGetVideoMode(monitor : Monitor*) : Vidmode*
+  fun get_video_mode = glfwGetVideoMode(monitor : Monitor*) : VidMode*
 
   # Generates a gamma ramp and sets it for the specified monitor.
   #
@@ -264,10 +264,10 @@ lib LibGLFW
 
   # Returns the current gamma ramp for the specified monitor.
   @[Raises]
-  fun get_gamma_ramp = glfwGetGammaRamp(monitor : Monitor*) : Gammaramp*
+  fun get_gamma_ramp = glfwGetGammaRamp(monitor : Monitor*) : GammaRamp*
 
   # Sets the current gamma ramp for the specified monitor.
   @[Raises]
   fun set_gamma_ramp = glfwSetGammaRamp(monitor : Monitor*,
-                                        ramp : Gammaramp*)
+                                        ramp : GammaRamp*)
 end

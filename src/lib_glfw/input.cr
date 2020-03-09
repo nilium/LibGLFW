@@ -276,37 +276,37 @@ lib LibGLFW
   VRESIZE_CURSOR   = 0x00036006
 
   # The function signature for mouse button callbacks.
-  alias Mousebuttonfun = (Pointer(Window), Int32, Int32, Int32 -> Void)
+  alias MouseButtonFun = (Pointer(Window), Int32, Int32, Int32 -> Void)
 
   # The function signature for cursor position callbacks.
-  alias Cursorposfun = (Pointer(Window), Float64, Float64 -> Void)
+  alias CursorPosFun = (Pointer(Window), Float64, Float64 -> Void)
 
   # The function signature for cursor enter/leave callbacks.
-  alias Cursorenterfun = (Pointer(Window), Int32 -> Void)
+  alias CursorEnterFun = (Pointer(Window), Int32 -> Void)
 
   # The function signature for scroll callbacks.
-  alias Scrollfun = (Pointer(Window), Float64, Float64 -> Void)
+  alias ScrollFun = (Pointer(Window), Float64, Float64 -> Void)
 
   # The function signature for keyboard key calbacks.
-  alias Keyfun = (Pointer(Window), Int32, Int32, Int32, Int32 -> Void)
+  alias KeyFun = (Pointer(Window), Int32, Int32, Int32, Int32 -> Void)
 
   # The function signature for Unicode character callbacks.
-  alias Charfun = (Pointer(Window), UInt32 -> Void)
+  alias CharFun = (Pointer(Window), UInt32 -> Void)
 
   # The function signature for Unicode character with modifiers callbacks.
-  alias Charmodsfun = (Pointer(Window), UInt32, Int32 -> Void)
+  alias CharModsFun = (Pointer(Window), UInt32, Int32 -> Void)
 
   # The function signature for file drop callbacks.
-  alias Dropfun = (Pointer(Window), Int32, Pointer(Pointer(UInt8)) -> Void)
+  alias DropFun = (Pointer(Window), Int32, Pointer(Pointer(UInt8)) -> Void)
 
   # The function signature for joystick configuration callbacks.
-  alias Joystickfun = (Int32, Int32 -> Void)
+  alias JoystickFun = (Int32, Int32 -> Void)
 
   # Opaque cursor object.
   type Cursor = Void
 
   # Gamepad input state.
-  struct Gamepadstate
+  struct GamepadState
     buttons : UInt8[15]
     axes : Float32[6]
   end
@@ -379,44 +379,44 @@ lib LibGLFW
   # Sets the key callback.
   @[Raises]
   fun set_key_callback = glfwSetKeyCallback(window : Window*,
-                                            cbfun : Keyfun) : Keyfun
+                                            cbfun : KeyFun) : KeyFun
 
   # Sets the Unicode character callback.
   @[Raises]
   fun set_char_callback = glfwSetCharCallback(window : Window*,
-                                              cbfun : Charfun) : Charfun
+                                              cbfun : CharFun) : CharFun
 
   # Sets the Unicode character with modifiers callback.
   #
   # Deprecated in GLFW 3.3. The callback will be removed in the next major version.
   @[Raises]
   fun set_char_mods_callback = glfwSetCharModsCallback(window : Window*,
-                                                       cbfun : Charmodsfun) : Charmodsfun
+                                                       cbfun : CharModsFun) : CharModsFun
 
   # Sets the mouse button callback.
   @[Raises]
   fun set_mouse_button_callback = glfwSetMouseButtonCallback(window : Window*,
-                                                             cbfun : Mousebuttonfun) : Mousebuttonfun
+                                                             cbfun : MouseButtonFun) : MouseButtonFun
 
   # Sets the cursor position callback.
   @[Raises]
   fun set_cursor_pos_callback = glfwSetCursorPosCallback(window : Window*,
-                                                         cbfun : Cursorposfun) : Cursorposfun
+                                                         cbfun : CursorPosFun) : CursorPosFun
 
   # Sets the cursor enter/exit callback.
   @[Raises]
   fun set_cursor_enter_callback = glfwSetCursorEnterCallback(window : Window*,
-                                                             cbfun : Cursorenterfun) : Cursorenterfun
+                                                             cbfun : CursorEnterFun) : CursorEnterFun
 
   # Sets the scroll callback.
   @[Raises]
   fun set_scroll_callback = glfwSetScrollCallback(window : Window*,
-                                                  cbfun : Scrollfun) : Scrollfun
+                                                  cbfun : ScrollFun) : ScrollFun
 
   # Sets the file drop callback.
   @[Raises]
   fun set_drop_callback = glfwSetDropCallback(window : Window*,
-                                              cbfun : Dropfun) : Dropfun
+                                              cbfun : DropFun) : DropFun
 
   # Returns whether the specified joystick is present.
   @[Raises]
@@ -461,7 +461,7 @@ lib LibGLFW
 
   # Sets the joystick configuration callback.
   @[Raises]
-  fun set_joystick_callback = glfwSetJoystickCallback(cbfun : Joystickfun) : Joystickfun
+  fun set_joystick_callback = glfwSetJoystickCallback(cbfun : JoystickFun) : JoystickFun
 
   # This function parses the specified ASCII encoded string and updates the internal list with any
   # gamepad mappings it finds. This string may contain either a single gamepad mapping or many
@@ -486,7 +486,7 @@ lib LibGLFW
 
   # Retrieves the state of the specified joystick remapped to an Xbox-like gamepad.
   @[Raises]
-  fun get_gamepad_state = glfwGetGamepadState(jid : Int32, state : Gamepadstate*) : Int32
+  fun get_gamepad_state = glfwGetGamepadState(jid : Int32, state : GamepadState*) : Int32
 
   # Sets the clipboard to the specified string.
   @[Raises]

@@ -42,31 +42,31 @@ lib LibGLFW
   end
 
   # The function signature for window position callbacks.
-  alias Windowposfun = (Window*, Int32, Int32 -> Void)
+  alias WindowPosFun = (Window*, Int32, Int32 -> Void)
 
   # The function signature for window resize callbacks.
-  alias Windowsizefun = (Window*, Int32, Int32 -> Void)
+  alias WindowSizeFun = (Window*, Int32, Int32 -> Void)
 
   # The function signature for window close callbacks.
-  alias Windowclosefun = (Window* -> Void)
+  alias WindowClose = (Window* -> Void)
 
   # The function signature for window content refresh callbacks.
-  alias Windowrefreshfun = (Window* -> Void)
+  alias WindowRefresh = (Window* -> Void)
 
   # The function signature for window focus/defocus callbacks.
-  alias Windowfocusfun = (Window*, Int32 -> Void)
+  alias WindowFocus = (Window*, Int32 -> Void)
 
   # The function signature for window iconify/restore callbacks.
-  alias Windowiconifyfun = (Window*, Int32 -> Void)
+  alias WindowIconify = (Window*, Int32 -> Void)
 
   # The function signature for window maximize callbacks.
-  alias Windowmaximizefun = (Window*, Int32 -> Void)
+  alias WindowMaximize = (Window*, Int32 -> Void)
 
   # The function signature for framebuffer resize callbacks.
-  alias Framebuffersizefun = (Window*, Int32, Int32 -> Void)
+  alias FramebufferSizeFun = (Window*, Int32, Int32 -> Void)
 
   # The function signature for window content scale callbacks.
-  alias Windowcontentscalefun = (Window*, Float32, Float32 -> Void)
+  alias WindowContentScaleFun = (Window*, Float32, Float32 -> Void)
 
   # Constants:
 
@@ -467,46 +467,46 @@ lib LibGLFW
   # Sets the position callback for the specified window.
   @[Raises]
   fun set_window_pos_callback = glfwSetWindowPosCallback(window : Window*,
-                                                         cbfun : Windowposfun) : Windowposfun
+                                                         cbfun : WindowPosFun) : WindowPosFun
 
   # Sets the size callback for the specified window.
   @[Raises]
   fun set_window_size_callback = glfwSetWindowSizeCallback(window : Window*,
-                                                           cbfun : Windowsizefun) : Windowsizefun
+                                                           cbfun : WindowSizeFun) : WindowSizeFun
 
   # Sets the close callback for the specified window.
   @[Raises]
   fun set_window_close_callback = glfwSetWindowCloseCallback(window : Window*,
-                                                             cbfun : Windowclosefun) : Windowclosefun
+                                                             cbfun : WindowClose) : WindowcloseFun
 
   # Sets the refresh callback for the specified window.
   @[Raises]
   fun set_window_refresh_callback = glfwSetWindowRefreshCallback(window : Window*,
-                                                                 cbfun : Windowrefreshfun) : Windowrefreshfun
+                                                                 cbfun : WindowRefresh) : WindowrefreshFun
 
   # Sets the focus callback for the specified window.
   @[Raises]
   fun set_window_focus_callback = glfwSetWindowFocusCallback(window : Window*,
-                                                             cbfun : Windowfocusfun) : Windowfocusfun
+                                                             cbfun : WindowFocus) : WindowfocusFun
 
   # Sets the iconify callback for the specified window.
   @[Raises]
   fun set_window_iconify_callback = glfwSetWindowIconifyCallback(window : Window*,
-                                                                 cbfun : Windowiconifyfun) : Windowiconifyfun
+                                                                 cbfun : WindowIconify) : WindowiconifyFun
 
   # Sets the maximize callback for the specified window.
   @[Raises]
-  fun set_window_maximize_callback = glfwSetWindowMaximizeCallback(window : Window*, cbfun : Windowmaximizefun) : Windowmaximizefun
+  fun set_window_maximize_callback = glfwSetWindowMaximizeCallback(window : Window*, cbfun : WindowMaximize) : WindowmaximizeFun
 
   # Sets the framebuffer resize callback for the specified window.
   @[Raises]
   fun set_framebuffer_size_callback = glfwSetFramebufferSizeCallback(window : Window*,
-                                                                     cbfun : Framebuffersizefun) : Framebuffersizefun
+                                                                     cbfun : FramebufferSizeFun) : FramebufferSizeFun
 
   # Sets the content scale callback for the specified window.
   @[Raises]
   fun set_window_content_scale_callback = glfwSetWindowContentScaleCallback(window : Window*,
-                                                                            cbfun : Windowcontentscalefun) : Windowcontentscalefun
+                                                                            cbfun : WindowContentScaleFun) : WindowContentScaleFun
 
   # Processes all pending events.
   @[Raises]

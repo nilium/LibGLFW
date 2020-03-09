@@ -48,7 +48,7 @@ lib LibGLFW
   # Types:
 
   # The function signature for error callbacks.
-  alias Errorfun = (Int32, UInt8* -> Void)
+  alias ErrorFun = (Int32, UInt8* -> Void)
 
   # Functions:
 
@@ -147,5 +147,5 @@ lib LibGLFW
   # - *cbfun*, the new callback. If nil, the current callback is removed.
   #
   # Returns the previously set callback or *nil* if no callback was set.
-  fun set_error_callback = glfwSetErrorCallback(cbfun : Errorfun) : Errorfun
+  fun set_error_callback = glfwSetErrorCallback(cbfun : ErrorFun) : ErrorFun
 end
