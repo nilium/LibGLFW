@@ -28,32 +28,32 @@ lib LibGLFW
   NO_ERROR = 0
 
   # GLFW has not been initialized.
-  NOT_INITIALIZED     = 0x00010001
+  NOT_INITIALIZED = 0x00010001
 
   # No context is current for this thread.
-  NO_CURRENT_CONTEXT  = 0x00010002
+  NO_CURRENT_CONTEXT = 0x00010002
 
   # One of the arguments to the function was an invalid enum value.
-  INVALID_ENUM        = 0x00010003
+  INVALID_ENUM = 0x00010003
 
   # One of the arguments to the function was an invalid value.
-  INVALID_VALUE       = 0x00010004
+  INVALID_VALUE = 0x00010004
 
   # A memory allocation failed.
-  OUT_OF_MEMORY       = 0x00010005
+  OUT_OF_MEMORY = 0x00010005
 
   # GLFW could not find support for the requested API on the system.
-  API_UNAVAILABLE     = 0x00010006
+  API_UNAVAILABLE = 0x00010006
 
   # The requested OpenGL or OpenGL ES version is not available.
   VERSION_UNAVAILABLE = 0x00010007
 
   # A platform-specific error occurred that does not match any of the more specific categories.
-  PLATFORM_ERROR      = 0x00010008
+  PLATFORM_ERROR = 0x00010008
 
   # The requested format is not supported or available.
-  FORMAT_UNAVAILABLE  = 0x00010009
+  FORMAT_UNAVAILABLE = 0x00010009
 
   # The specified window does not have an OpenGL or OpenGL ES context.
-  NO_WINDOW_CONTEXT   = 0x0001000A
+  NO_WINDOW_CONTEXT = 0x0001000A
 end
