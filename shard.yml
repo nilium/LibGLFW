@@ -1,9 +1,10 @@
 name: lib_glfw
-version: 0.1.0
+version: 0.2.0
 
 authors:
   - Caleb Uriah Harrison <calebuharrison@gmail.com>
+  - Noel Cower <ncower@nil.dev>
 
-crystal: 0.22.0
+crystal: 0.33.0
 
 license: MIT
