@@ -1,2 +1,2 @@
 require "spec"
-require "../src/glfw"
+require "../src/lib_glfw"

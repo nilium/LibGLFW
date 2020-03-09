@@ -19,4 +19,19 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-require "./lib_glfw/*"
+# Library definition and configuration.
+
+@[Link("glfw3")]
+lib LibGLFW
+  # The major version number of the GLFW library.
+  # This does not reflect the linked version of GLFW, only the version the library was written for.
+  VERSION_MAJOR = 3
+
+  # The minor version number of the GLFW library.
+  # This does not reflect the linked version of GLFW, only the version the library was written for.
+  VERSION_MINOR = 3
+
+  # The revision number of the GLFW library.
+  # This does not reflect the linked version of GLFW, only the version the library was written for.
+  VERSION_REVISION = 2
+end

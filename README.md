@@ -1,26 +1,37 @@
 # LibGLFW
 
-Complete GLFW bindings written in Crystal.
+GLFW 3.x bindings written in Crystal.
 
-LibGLFW offers Crystal bindings for the [full GLFW specification](http://www.glfw.org/docs/latest/glfw3_8h.html). These
-bindings are relatively "raw" - with a few notable exceptions, names of functions, constants, and types remain unchanged.
+LibGLFW offers Crystal bindings for the [full GLFW
+specification](http://www.glfw.org/docs/latest/glfw3_8h.html). These bindings
+are relatively "raw". The `GLFW` prefix has been removed from functions,
+constants, and types (as everything is scoped under `LibGLFW`), and function
+names have been written in `snake_case`.
+
+LibGLFW currently supports GLFW 3.3.2, minus native functions.
 
 
 ## Installation
 
-First, make sure you've got GLFW3:
+First, make sure you've got GLFW 3:
 
 ```sh
+# Void Linux
+xbps-install glfw glfw-devel
+
+# macOS
 brew install glfw3
+
+# Others: varies.
 ```
 
-Add this to your application's `shard.yml`:
+Add LibGLFW to your application's `shard.yml` as a dependency:
 
 ```yaml
 dependencies:
   lib_glfw:
-    github: calebuharrison/LibGLFW
-    branch: master
+    github: nilium/LibGLFW
+    branch: v3.3
 ```
 
 Install your dependencies:
@@ -37,32 +48,40 @@ require "lib_glfw"
 # Initialize GLFW
 LibGLFW.init
 
-width, height, title, monitor, share = 640, 480, "My First Window!", nil, nil
+begin
 
-# Create a window and its associated OpenGL context.
-window_handle = LibGLFW.create_window(width, height, title, monitor, share)
+  width, height, title, monitor, share = 640, 480, "My First Window!", nil, nil
 
-# Render new frames until the window should close.
-until LibGLFW.window_should_close(window_handle)
-  LibGLFW.swap_buffers(window_handle)
+  # Create a window and its associated OpenGL context.
+  window_handle = LibGLFW.create_window(width, height, title, monitor, share)
+
+  # Render new frames until the window should close.
+  until LibGLFW.window_should_close(window_handle) == LibGLFW::TRUE
+    LibGLFW.wait_events
+    LibGLFW.swap_buffers(window_handle)
+  end
+
+  # Destroy the window along with its context.
+  LibGLFW.destroy_window(window_handle)
+
+ensure
+  # Terminate GLFW
+  LibGLFW.terminate
 end
-
-# Destroy the window along with its context.
-LibGLFW.destroy_window(window_handle)
-
-# Terminate GLFW
-LibGLFW.terminate
 ```
 
 ## Differences From the C API
 
-LibGLFW differs from the standard GLFW API in only a few, simple ways. Each of these differences only exists to make the
-API fit the [style guide](https://crystal-lang.org/docs/conventions/coding_style.html) of the Crystal language.
+LibGLFW differs from the standard GLFW API in only a few, simple ways. Each of
+these differences only exists to make the API fit the [style
+guide](https://crystal-lang.org/docs/conventions/coding_style.html) of the
+Crystal language.
 
 ### Functions/Methods
 
-Method names in LibGLFW do not have the "glfw" prefix that is present in the C API. Additionally, underscores are used to separate words
-rather than camel case. LibGLFW methods are all called as class methods of the LibGLFW lib.
+Method names in LibGLFW do not have the "glfw" prefix that is present in the
+C API. Additionally, underscores are used to separate words rather than camel
+case. LibGLFW methods are all called as class methods of the LibGLFW lib.
 
 In C:
 ```c
@@ -87,24 +106,26 @@ In C:
 ```c
 // Check to see if the joystick is present and complain if it isn't.
 if (!glfwJoystickPresent(GLFW_JOYSTICK_9)) {
-  printf("Nooooooooooooooo!!!!!!\n");
+  printf("Joystick not present.\n");
 }
 ```
 
 In Crystal:
 ```crystal
 # Check to see if the joystick is present and complain if it isn't.
-puts "Noooooooooooo!!!!!!" unless LibGLFW.joystick_present(LibGLFW::JOYSTICK_9)
+puts "Joystick not present." unless LibGLFW.joystick_present(LibGLFW::JOYSTICK_9)
 ```
 
 ## Contributing
 
-1. Fork it ( https://github.com/calebuharrison/LibGLFW/fork )
-2. Create your feature branch (git checkout -b my-new-feature)
-3. Commit your changes (git commit -am 'Add some feature')
-4. Push to the branch (git push origin my-new-feature)
-5. Create a new Pull Request
+1. [Fork it.](https://github.com/nilium/LibGLFW/fork)
+2. Create a feature branch (`git checkout -b my-new-feature`).
+3. Add your name to the license for any changes you made (`Copyright <year> <your name>.`).
+4. Commit your changes (`git add <files>; git commit -v`).
+5. Push to the branch (`git push -u origin my-new-feature`)
+6. Create a new pull request.
 
 ## Contributors
 
-- [calebuharrison](https://github.com/calebuharrison) Caleb Uriah Harrison - creator, maintainer
+- [calebuharrison](https://github.com/calebuharrison) Caleb Uriah Harrison - Author the original [LibGLFW](https://github.com/calebuharrison/LibGLFW).
+- [nilium](https://github.com/nilium) Noel Cower - Maintainer of `nilium/lib_glfw`.

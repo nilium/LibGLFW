@@ -1,5 +1,4 @@
 # Copyright (c) 2017 Caleb Uriah Harrison.
-# Copyright (c) 2020 Noel Cower.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -19,4 +18,31 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-require "./lib_glfw/*"
+# Context functions and types.
+
+require "./lib"
+
+lib LibGLFW
+  # Client API function pointer type.
+  type GlProc = (Void -> Void)
+
+  # Makes the context of the specified window current for the calling thread.
+  @[Raises]
+  fun make_context_current = glfwMakeContextCurrent(window : Window*)
+
+  # Returns the window whose context is current on the calling thread.
+  @[Raises]
+  fun get_current_context = glfwGetCurrentContext : Window*
+
+  # Sets the swap interval for the current context.
+  @[Raises]
+  fun swap_interval = glfwSwapInterval(interval : Int32)
+
+  # Returns whether the specified extension is available.
+  @[Raises]
+  fun extension_supported = glfwExtensionSupported(extension : UInt8*) : Int32
+
+  # Returns the address of the specified function for the current context
+  @[Raises]
+  fun get_proc_address = glfwGetProcAddress(procname : UInt8*) : GlProc
+end
