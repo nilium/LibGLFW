@@ -1,5 +1,5 @@
-name: lib_glfw
-version: 0.2.0
+name: lib_tglfw
+version: 0.2.1
 
 authors:
   - Caleb Uriah Harrison <calebuharrison@gmail.com>
